@@ -130,6 +130,21 @@ bool ListDelete(LinkNode *&L,int i, ElemType &e){						//删除第i个元素（必须找到
 		return true;
 	}
 }
+void fun(LinkNode *&L) {
+	LinkNode *p,*pre,*q;
+	p=L->next;
+	pre=p;
+	while(q!=NULL){
+		q=q->next;
+	}
+	while(p!=NULL){
+		L->next=p->next;
+		q->next=p;
+		p->next=NULL;
+		q=p;
+		p=pre;
+	}
+}
 int main(){
 	LinkNode *h;
 	ElemType e;
@@ -157,7 +172,11 @@ int main(){
 	ListDelete(h,3,e);
 	printf("  (11)输出单链表h：");
 	DispList(h);
-	printf("  (12)释放单链表h\n");
+	printf("  (12)倒序：");
+	fun(h);
+	printf("  (13)输出单链表h：");
+	DispList(h);
+	printf("  (14)释放单链表h\n");
 	DestroyList(h);
 	return(1);
 }

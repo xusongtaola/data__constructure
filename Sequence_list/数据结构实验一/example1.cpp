@@ -97,6 +97,31 @@ bool ListDelete(SqList * &L,int i, ElemType &e)
 	L->length--;
 	return true;
 }
+void fun_4(SqList *&L){				//删除最大元素 
+	int i,j=0;
+	for(i=1;i<L->length;i++){
+		if(L->data[i]>L->data[j]){
+			j=i;
+		}
+	}
+	for(i=j;i<L->length-1;i++){
+		L->data[i]=L->data[i+1];
+	}
+	L->length--;
+} 
+void fun_5(SqList *&L,ElemType x){				//在L的最大元素左边插入一个新元素
+	int i,j=0;
+	for(i=1;i<L->length;i++){
+		if(L->data[i]>L->data[j]){
+			j=i;
+		}
+	}
+	for(i=L->length;i>j;i--){
+		L->data[i]=L->data[i-1];
+	}
+	L->data[j]=x; 
+	L->length++;
+} 
 int main()
 {
 	SqList *L;
@@ -125,7 +150,13 @@ int main()
 	ListDelete(L,3,e);
 	printf("  (11)输出顺序表L：");
 	DispList(L);
-	printf("  (12)释放顺序表L\n");
+	//printf("  (12)删除L的最大元素\n");
+	//fun_4(L);
+	//printf("  (13)在L的最大元素左边插入一个新元素\n");
+	fun_5(L,'a');
+	printf("  (14)输出顺序表L：");
+	DispList(L);
+	printf("  (15)释放顺序表L\n");
 	DestroyList(L);
 	return 1;
 
