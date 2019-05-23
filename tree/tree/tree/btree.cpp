@@ -87,6 +87,7 @@ void DispBTree(BTNode * b) {				//以括号表示法输出二叉树
 		}
 	}
 }
+
 int main() {
 	BTNode *p, *b, *lp, *rp;
 	//char *s;
